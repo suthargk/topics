@@ -62,3 +62,8 @@ hr {
   pointer-events: none;
   display: block; /* For Firefox */
 }
+
+.editor-container {
+  max-width: 800px;
+  min-width: 500px;
+}

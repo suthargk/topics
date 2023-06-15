@@ -5,14 +5,9 @@ import CreatableSelect from "react-select/creatable";
 import { CREATE_TOPIC } from "../store/Actions";
 import CloseIcon from "../assets/icons/CloseIcon";
 import { v4 as uuuid4 } from "uuid";
+import { getRandomColor, options, selectCustomStyles } from "./utils";
 
-const TopicEditorOverlay = ({ dispatch, setShowEditor }) => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-
+const CreateTopicOverlay = ({ dispatch, setShowEditor }) => {
   const [selectedTags, setSelectedTags] = useState([]);
 
   const { handleSubmit, register } = useForm();
@@ -24,8 +19,12 @@ const TopicEditorOverlay = ({ dispatch, setShowEditor }) => {
   };
 
   const handleTagChange = (selectedOptions) => {
-    setSelectedTags(selectedOptions);
+    const coloredSelectedOption = selectedOptions.map((option) =>
+      option.color ? { ...option } : { ...option, color: getRandomColor() }
+    );
+    setSelectedTags(coloredSelectedOption);
   };
+
   return (
     <div className="z-50 shadow-lg fixed w-full h-full left-0 top-0 flex justify-center items-center topic-editor-overlay">
       <div className="max-w-xl w-full bg-white rounded-md">
@@ -57,6 +56,8 @@ const TopicEditorOverlay = ({ dispatch, setShowEditor }) => {
             <div className="">
               <div className="mb-2 font-semibold">Keywords</div>
               <CreatableSelect
+                value={selectedTags}
+                styles={selectCustomStyles}
                 onChange={handleTagChange}
                 isMulti
                 options={options}
@@ -86,4 +87,4 @@ const TopicEditorOverlay = ({ dispatch, setShowEditor }) => {
 const mapDispatchToProps = (dispatch) => {
   return { dispatch };
 };
-export default connect(null, mapDispatchToProps)(TopicEditorOverlay);
+export default connect(null, mapDispatchToProps)(CreateTopicOverlay);

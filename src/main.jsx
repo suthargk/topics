@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { topicReducer } from "./store/reducers/index.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TopicList from "./components/common/TopicList.jsx";
-import EditTopic from "./components/EditTopic.jsx";
+import EditTopicOverlay from "./components/EditTopicOverlay.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         path: "/custom",
       },
       {
-        element: <EditTopic />,
+        element: <EditTopicOverlay />,
         path: "custom/:id",
       },
     ],

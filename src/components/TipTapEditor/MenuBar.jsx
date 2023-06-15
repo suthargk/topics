@@ -1,4 +1,3 @@
-import React from "react";
 import MenuItem from "./MenuItem";
 import BoldIcon from "../../assets/icons/BoldIcon";
 import ItalicIcon from "../../assets/icons/ItalicIcon";
@@ -80,7 +79,7 @@ const MenuBar = ({ editor }) => {
   ];
 
   return (
-    <div className="flex space-x-1">
+    <div className="flex space-x-2 justify-center items-center bg-gray-100 -mx-10 p-1 flex-wrap">
       {items.map((item, index) => (
         <div key={index}>
           <MenuItem {...item} />

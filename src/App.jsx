@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import TopicSideBar from "./components/TopicSideBar";
-import TopicEditorOverlay from "./components/TopicEditorOverlay";
+import CreateTopicOverlay from "./components/CreateTopicOverlay";
 
 function App() {
   const [showEditor, setShowEditor] = useState(false);
@@ -17,7 +17,7 @@ function App() {
       </div>
       <TopicSideBar handleShowEditor={handleShowEditor} />
 
-      {showEditor && <TopicEditorOverlay setShowEditor={setShowEditor} />}
+      {showEditor && <CreateTopicOverlay setShowEditor={setShowEditor} />}
     </div>
   );
 }

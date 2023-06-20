@@ -10,7 +10,11 @@ import { getRandomColor, options, selectCustomStyles } from "./utils";
 const CreateTopicOverlay = ({ dispatch, setShowEditor }) => {
   const [selectedTags, setSelectedTags] = useState([]);
 
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (formValues) => {
     const payload = { ...formValues, tags: selectedTags, id: uuuid4() };
@@ -33,24 +37,36 @@ const CreateTopicOverlay = ({ dispatch, setShowEditor }) => {
           className="p-6 text-xl font-semibold flex justify-between"
         >
           <h2>New Topic</h2>
-          <CloseIcon
-            onClick={() => {
-              setShowEditor(false);
-            }}
-          />
+
+          <div className="p-2 transition-all duration-300 text-gray-600 cursor-pointer hover:bg-gray-100 rounded-md">
+            <CloseIcon
+              onClick={() => {
+                setShowEditor(false);
+              }}
+            />
+          </div>
         </div>
         <div className="p-6">
           <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="title">
               <div className="mb-2 font-semibold">Topic Title</div>
               <input
-                className="p-2 w-full overlay-input rounded-md focus:outline-indigo-500 text-gray-600"
+                className="p-2 w-full overlay-input rounded-md focus:outline-indigo-500 text-gray-600 text-base"
                 placeholder="Enter title here..."
                 type="text"
                 id="title"
                 name="title"
-                {...register("title")}
+                {...register("title", {
+                  required: "Topic title is required",
+                  minLength: {
+                    value: 5,
+                    message: "Topic title cannot less than 5 characters",
+                  },
+                })}
               />
+              <p className="text-rose-600 text-xs font-medium mt-1">
+                {errors?.title?.message}
+              </p>
             </label>
 
             <div className="">
@@ -66,13 +82,16 @@ const CreateTopicOverlay = ({ dispatch, setShowEditor }) => {
             <div className="flex justify-end space-x-6">
               <button
                 type="button"
-                className="bg-gray-200 py-2 px-4 rounded-md"
+                className="bg-gray-200 py-2 px-4 rounded-md hover:bg-gray-100 transition-colors duration-300 "
+                onClick={() => {
+                  setShowEditor(false);
+                }}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="bg-indigo-600 py-2 px-4 text-white rounded-md"
+                className="bg-indigo-600 py-2 px-4 text-white rounded-md hover:bg-indigo-500 transition-colors duration-300"
               >
                 Create Topic
               </button>

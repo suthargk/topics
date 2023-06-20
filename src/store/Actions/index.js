@@ -1,2 +1,3 @@
 export const CREATE_TOPIC = "CREATE_TOPIC";
 export const ADD_EDITOR_CONTENT = "ADD_EDITOR_CONTENT";
+export const DELETE_TOPIC = "DELETE_TOPIC";

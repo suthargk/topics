@@ -8,6 +8,7 @@ import UnorderedListIcon from "../../assets/icons/UnorderedListIcon";
 import OrderedListIcon from "../../assets/icons/OrderedListIcon";
 import CodeIcon from "../../assets/icons/CodeIcon";
 import CodeBlockIcon from "../../assets/icons/CodeBlockIcon";
+import ImageIcon from "../../assets/icons/ImageIcon";
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -58,28 +59,20 @@ const MenuBar = ({ editor }) => {
       isActive: () => editor.isActive("paragraph"),
     },
     {
-      icon: <UnorderedListIcon />,
-      title: "Bullet List",
-      action: () => editor.chain().focus().toggleBulletList().run(),
-      isActive: () => editor.isActive("bulletList"),
-    },
-    {
-      icon: <OrderedListIcon />,
-      title: "Ordered List",
-      action: () => editor.chain().focus().toggleOrderedList().run(),
-      isActive: () => editor.isActive("orderedList"),
-    },
-
-    {
       icon: <CodeBlockIcon />,
       title: "Code Block",
       action: () => editor.chain().focus().toggleCodeBlock().run(),
       isActive: () => editor.isActive("codeBlock"),
     },
+    {
+      icon: <ImageIcon />,
+      title: "Image",
+      action: (url) => editor.chain().focus().setImage({ src: url }).run(),
+    },
   ];
 
   return (
-    <div className="flex space-x-2 justify-center items-center bg-gray-100 -mx-10 p-1 flex-wrap">
+    <div className="flex space-x-2 justify-center items-center bg-gray-100 -mx-4 p-1 flex-wrap sticky top-0 left-0 z-10">
       {items.map((item, index) => (
         <div key={index}>
           <MenuItem {...item} />

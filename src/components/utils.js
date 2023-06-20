@@ -4,7 +4,7 @@ export const topicHeader = [
   {
     id: 1,
     name: "All",
-    path: "/all",
+    path: "",
   },
   {
     id: 2,
@@ -29,9 +29,9 @@ export const topicHeader = [
 ];
 
 export const options = [
-  { value: "chocolate", label: "Chocolate", color: "#22c55e" },
-  { value: "strawberry", label: "Strawberry", color: "#f43f5e" },
-  { value: "vanilla", label: "Vanilla", color: "#8b5cf6" },
+  { value: "chocolate", label: "Chocolate", color: "#16a34a" },
+  { value: "strawberry", label: "Strawberry", color: "#db2777" },
+  { value: "vanilla", label: "Vanilla", color: "#7c3aed" },
 ];
 
 export const selectCustomStyles = {
@@ -41,10 +41,18 @@ export const selectCustomStyles = {
       color: data.color,
     };
   },
+
+  container: (styles) => {
+    return {
+      ...styles,
+      zIndex: 20,
+    };
+  },
   placeholder: (defaultStyles) => {
     return {
       ...defaultStyles,
       color: "rgb(156 163 175)",
+      fontSize: "15px",
     };
   },
   control: (styles, base) => {
@@ -52,10 +60,13 @@ export const selectCustomStyles = {
       ...styles,
       cursor: "pointer",
       borderColor: "rgb(229 231 235)",
-      padding: 5,
+      padding: "2px",
       boxShadow: base.isFocused ? `0 0 0 1px rgb(99 102 241)` : 0,
+      border: base.isFocused && "1px solid rgb(99 102 241)",
+
       "&:hover": {
         borderColor: "rgb(209 213 219)",
+        border: base.isFocused && "1px solid rgb(99 102 241)",
       },
     };
   },
@@ -69,8 +80,8 @@ export const selectCustomStyles = {
     const color = chroma(data.color);
     return {
       ...styles,
-      backgroundColor: color.alpha(0.15).css(),
-      color: color.alpha(0.9).css(),
+      backgroundColor: color.alpha(0.1).css(),
+      color: color.alpha(1).css(),
       borderRadius: "15px",
       display: "flex",
       alignItems: "center",
@@ -94,23 +105,23 @@ export const selectCustomStyles = {
 };
 
 export const colors = [
-  "#ef4444",
-  "#f97316",
-  "#f59e0b",
-  "#eab308",
-  "#84cc16",
-  "#22c55e",
-  "#10b981",
-  "#14b8a6",
-  "#06b6d4",
-  "#0ea5e9",
-  "#3b82f6",
-  "#6366f1",
-  "#8b5cf6",
-  "#a855f7",
-  "#d946ef",
-  "#ec4899",
-  "#f43f5e",
+  "#dc2626",
+  "#ea580c",
+  "#d97706",
+  "#ca8a04",
+  "#65a30d",
+  "#16a34a",
+  "#059669",
+  "#0d9488",
+  "#0891b2",
+  "#0284c7",
+  "#2563eb",
+  "#4f46e5",
+  "#7c3aed",
+  "#9333ea",
+  "#c026d3",
+  "#db2777",
+  "#e11d48",
 ];
 
 export const getRandomColor = () => {

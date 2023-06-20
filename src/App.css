@@ -1,4 +1,5 @@
-.topic-editor-overlay {
+.topic-editor-overlay,
+.alert-overlay {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -49,7 +50,7 @@ hr {
 
 .ProseMirror {
   padding: 10px;
-  min-height: 300px;
+  min-height: 100vh;
 }
 
 .ProseMirror:focus {
@@ -60,10 +61,24 @@ hr {
   content: attr(placeholder);
   color: rgb(156 163 175);
   pointer-events: none;
-  display: block; /* For Firefox */
 }
 
 .editor-container {
   max-width: 800px;
   min-width: 500px;
+}
+
+.category-link-border {
+  margin-top: 12px;
+  height: 4px;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.category-link:hover + .category-link-border {
+  background: rgb(79, 70, 229);
+}
+
+.apply-border {
+  border: 10px solid orange;
 }

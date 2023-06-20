@@ -8,6 +8,8 @@ import { topicReducer } from "./store/reducers/index.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TopicList from "./components/common/TopicList.jsx";
 import EditTopicOverlay from "./components/EditTopicOverlay.jsx";
+import AllTopics from "./components/AllTopics.jsx/AllTopics.jsx";
+import CustomTopics from "./components/CustomTopics/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +17,16 @@ const router = createBrowserRouter([
     path: "/",
     children: [
       {
-        element: <TopicList />,
+        element: <CustomTopics />,
         path: "/custom",
       },
       {
         element: <EditTopicOverlay />,
         path: "custom/:id",
+      },
+      {
+        element: <AllTopics />,
+        path: "",
       },
     ],
   },

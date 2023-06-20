@@ -34,7 +34,7 @@ const TopicItem = ({ topic, dispatch }) => {
         onClick={() => {
           navigate(`/custom/${topic.id}`);
         }}
-        className="bg-white cursor-pointer"
+        className="bg-white cursor-pointer hover:bg-gray-50"
       >
         <td className="mr-2 p-2 pl-4" style={{ width: "400px" }}>
           <div
@@ -54,7 +54,7 @@ const TopicItem = ({ topic, dispatch }) => {
           <button
             ref={moreButtonRef}
             onClick={handleMoreOption}
-            className={`more-button p-1 hover:bg-gray-100 rounded-lg ${
+            className={`p-1 hover:bg-gray-100 rounded-lg ${
               showMoreOptionLayout && "bg-gray-100"
             }`}
             type="button"

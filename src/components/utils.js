@@ -4,7 +4,7 @@ export const topicHeader = [
   {
     id: 1,
     name: "All",
-    path: "",
+    path: "/",
   },
   {
     id: 2,

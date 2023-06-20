@@ -30,8 +30,18 @@ const CreateTopicOverlay = ({ dispatch, setShowEditor }) => {
   };
 
   return (
-    <div className="z-50 shadow-lg fixed w-full h-full left-0 top-0 flex justify-center items-center topic-editor-overlay">
-      <div className="max-w-xl w-full bg-white rounded-md">
+    <div
+      onClick={() => {
+        setShowEditor(false);
+      }}
+      className="z-50 shadow-lg fixed w-full h-full left-0 top-0 flex justify-center items-center topic-editor-overlay"
+    >
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        className="max-w-xl w-full bg-white rounded-md"
+      >
         <div
           style={{ borderBottom: "1px solid #e4e4e4" }}
           className="p-6 text-xl font-semibold flex justify-between"

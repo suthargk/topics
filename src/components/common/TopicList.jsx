@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import TopicItem from "./TopicItem";
 
 const TopicList = ({ topics }) => {
-  console.log(topics);
   return (
     <div className="">
       <div className="overflow-auto border-2 border-gray-200 rounded-2xl">
@@ -24,8 +23,6 @@ const TopicList = ({ topics }) => {
         </div>
       </div>
     </div>
-
-    // </div>
   );
 };
 

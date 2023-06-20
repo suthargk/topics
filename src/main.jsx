@@ -6,15 +6,16 @@ import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import { topicReducer } from "./store/reducers/index.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import TopicList from "./components/common/TopicList.jsx";
 import EditTopicOverlay from "./components/EditTopicOverlay.jsx";
 import AllTopics from "./components/AllTopics.jsx/AllTopics.jsx";
 import CustomTopics from "./components/CustomTopics/index.jsx";
+import ErrorPage from "./components/common/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    errorElement: <ErrorPage />,
     children: [
       {
         element: <CustomTopics />,

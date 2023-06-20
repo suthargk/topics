@@ -18,7 +18,7 @@ const EditTopicOverlay = ({ topicList, dispatch }) => {
   const [topicTitle, setTopicTitle] = useState(topic.title);
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   const textAreaRef = useRef(null);
   useAutosizeTextArea(textAreaRef.current, topicTitle);
@@ -49,10 +49,7 @@ const EditTopicOverlay = ({ topicList, dispatch }) => {
       setError({ message: "Topic title: can't be blank" });
       return;
     }
-    if (topicTitle.length < 5) {
-      setError({ message: "Topic title: can't less than 5 characters" });
-      return;
-    }
+
     setIsSubmitting(true);
     dispatch({
       type: ADD_EDITOR_CONTENT,
@@ -68,7 +65,6 @@ const EditTopicOverlay = ({ topicList, dispatch }) => {
   };
 
   const handleSelectChange = (selectedOptions) => {
-    if (selectedOptions.length > 5) return;
     const coloredSelectedOption = selectedOptions.map((option) =>
       option.color ? { ...option } : { ...option, color: getRandomColor() }
     );
